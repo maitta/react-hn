@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import moment from 'moment';
+
 import '../styles/Item.scss';
 import hnAPI from "../services/hnAPI";
-import moment from 'moment';
+
 
 function Item(props) {
     const itemID = props.itemID;
@@ -32,7 +36,7 @@ function Item(props) {
                             <span>{item.score} points by <a href="">{item.by}</a></span>
                     }
                     <span className="legend">{timeAgo}</span>
-                    <a className="legend" href="">
+                    <Link className="legend" to={`/item/${itemID}`}>
                         <span >
                             {item.descendants}
                             {
@@ -41,7 +45,7 @@ function Item(props) {
                                 item.descendants > 1 && <span className="legend">comments</span>
                             }
                         </span>                        
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="item-mobile">
