@@ -17,9 +17,10 @@ function Stories() {
         <div className="main-content">            
             <ol>                
                 {
-                    stories.map((i) => <li key={i} className="post">
-                        <Item className="item-block" itemID={i}></Item>
-                    </li>)
+                    stories.map((i) => 
+                        <li className="post" key={i}>
+                            <Item className="item-block" itemID={i}></Item>
+                        </li>)
                 }                
             </ol>
             <div className="nav">

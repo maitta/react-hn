@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import '../styles/App.scss';
 
-import Header from './Header';
+import Header from './header/Header';
 import Stories from './Stories';
 import Footer from './Footer';
 
@@ -12,7 +12,7 @@ import New from './header/New';
 import Show from './header/Show';
 import Ask from './header/Ask';
 import Jobs from './header/Jobs';
-import ItemComments from './ItemComments';
+import ItemComments from './comments/ItemComments';
 
 function App() {
   
@@ -34,7 +34,7 @@ function App() {
          * only once. In this case, it is component header that has it declared. This means even if footer component doesn't have
          * an outlet tag, it will be present nonetheless in all routes.
          */}
-        <Route path="/" element={[<Header />, <Footer />]} >
+        <Route path="/" element={[<Header key={1} />, <Footer key={2} />]} >
           <Route path="" element={<Stories />} />
           <Route path="/new" element={<New />} /> 
           <Route path="/show" element={<Show />} />

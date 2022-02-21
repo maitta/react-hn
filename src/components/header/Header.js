@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/Header.scss';
+import '../../styles/Header.scss';
 
 import { Link, Outlet } from "react-router-dom";
 
@@ -16,7 +16,6 @@ function Header(){
                         <a href="/">reactjs HN</a>
                     </h1>
                     <span className="header-nav">
-
                         <nav>
                             <Link to="/new">new</Link>
                             <span className="divider">                        |

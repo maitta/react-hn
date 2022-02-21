@@ -40,9 +40,9 @@ function Item(props) {
                         <span >
                             {item.descendants}
                             {
-                                item.descendants === 0 && <span className="legend">discuss</span> ||
-                                item.descendants === 1 && <span className="legend">comment</span> ||
-                                item.descendants > 1 && <span className="legend">comments</span>
+                                (item.descendants === 0 && <span className="legend">discuss</span>) ||
+                                (item.descendants === 1 && <span className="legend">comment</span>) ||
+                                (item.descendants > 1 && <span className="legend">comments</span>)
                             }
                         </span>                        
                     </Link>
