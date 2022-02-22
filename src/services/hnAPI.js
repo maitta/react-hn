@@ -1,18 +1,29 @@
 import axios from "axios";
 
+const StoryType = {
+    top: 'top',
+    best: 'best',
+    new: 'new',
+    ask: 'ask',
+    show: 'show',
+    job: 'job'
+}
+
+export {StoryType};
+
 const hnAPI = {
     baseUrl: 'https://hacker-news.firebaseio.com/v0',
     baseUrlAlt: 'https://node-hnapi.herokuapp.com',
-    fetchStories: function() {
+    fetchStories: function(storyType) {
         return new Promise((resolve) => {
-            axios.get(`${this.baseUrl}/topstories.json`).then((response) => {
+            axios.get(`${this.baseUrl}/${storyType}stories.json`).then((response) => {
                 // TODO debug flag
                 //console.debug(`Fetching topstories: ${JSON.stringify(response, null, 4)}`)
                 resolve(response.data);
             })
             .catch((error) => {
                 console.log(error);
-                throw 'Could not fetch Hacker News\' stories';
+                throw `Could not fetch Hacker News\' ${storyType} stories`;
             })
         })        
     },

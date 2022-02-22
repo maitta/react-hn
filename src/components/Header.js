@@ -1,5 +1,5 @@
 import React from "react";
-import '../../styles/Header.scss';
+import '../styles/Header.scss';
 
 import { Link, Outlet } from "react-router-dom";
 
@@ -18,17 +18,14 @@ function Header(){
                     <span className="header-nav">
                         <nav>
                             <Link to="/new">new</Link>
-                            <span className="divider">                        |
-                            </span>
+                            <span className="divider">|</span>
+                            <Link to="/best">best</Link>
+                            <span className="divider">|</span>
                             <Link to="/show">show</Link>
-                            <span className="divider">
-                            |
-                            </span>
+                            <span className="divider">|</span>
                             <Link to="/ask">ask</Link>
-                            <span className="divider">
-                            |
-                            </span>
-                            <Link to="/jobs">jobs</Link>
+                            <span className="divider">|</span>
+                            <Link to="/job">jobs</Link>
                         </nav>                    
                     </span>
                     </div>
