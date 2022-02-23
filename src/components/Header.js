@@ -1,36 +1,36 @@
 import React from "react";
-import '../styles/Header.scss';
+import { useLocation } from "react-router-dom";
 
+import '../styles/Header.scss';
+import logo from '../react-hn.svg';
 import { Link, Outlet } from "react-router-dom";
 
 function Header(){
+    const location = useLocation().pathname;
+    const activeClass = (route) => { return location.includes(route) ? "active" : null }
+
     return(      
         <>  
             <header id="header">
-                <a className="home-link" href="/">
-                    <img alt="reactjs logo" className="logo" src="https://i.imgur.com/J303pQ4.png"></img>
-                </a>
+                <img alt={logo} className="logo" src={logo}></img>
                 <div className="header-text">
                     <div className="left">
-                    <h1 className="name">
-                        <a href="/">reactjs HN</a>
-                    </h1>
-                    <span className="header-nav">
-                        <nav>
-                            <Link to="/new">new</Link>
-                            <span className="divider">|</span>
-                            <Link to="/best">best</Link>
-                            <span className="divider">|</span>
-                            <Link to="/show">show</Link>
-                            <span className="divider">|</span>
-                            <Link to="/ask">ask</Link>
-                            <span className="divider">|</span>
-                            <Link to="/job">jobs</Link>
-                        </nav>                    
-                    </span>
-                    </div>
-                    <div className="info">
-                        <a href="https://angular2-hn.firebaseapp.com/news/1" target="_blank">TODO</a>
+                        <h1 className="name">
+                            <Link to="/">reactjs HN</Link>
+                        </h1>
+                        <span className="header-nav">
+                            <nav>
+                                <Link className={activeClass("/new")} to="/new">new</Link>
+                                <span className="divider">|</span>
+                                <Link className={activeClass("/best")} to="/best">best</Link>
+                                <span className="divider">|</span>
+                                <Link className={activeClass("/show")} to="/show">show</Link>
+                                <span className="divider">|</span>
+                                <Link className={activeClass("/ask")} to="/ask">ask</Link>
+                                <span className="divider">|</span>
+                                <Link className={activeClass("/job")} to="/job">jobs</Link>
+                            </nav>                    
+                        </span>
                     </div>
                 </div>
             </header>  

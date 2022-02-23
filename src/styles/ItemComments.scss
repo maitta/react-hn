@@ -46,9 +46,13 @@ p {
 }
 
 a {
-  color: #000;
+  color: #ff6600;
   cursor: pointer;
   text-decoration: none;
+
+  &:hover{
+    text-decoration: none;
+  }
 }
 
 @media #{$mobile-only} {
@@ -73,6 +77,10 @@ a {
   white-space: nowrap;
   overflow: hidden;
   margin: 0 75px;
+}
+
+pre {
+  white-space: pre-wrap;
 }
 
 @media #{$mobile-only} {
@@ -109,9 +117,9 @@ a {
 }
 
 .subtext a {
-  color: #b92b27;
+  color: #ff6600;
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 

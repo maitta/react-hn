@@ -27,10 +27,10 @@ p {
     letter-spacing: 0.5px;
 
     a {
-      color: #b92b27;
+      color: #ff6600;
 
       &:hover {
-        text-decoration: underline;
+        text-decoration: none;
       };
     }
   }
@@ -42,10 +42,10 @@ p {
     letter-spacing: 0.5px;
 
     a {
-      color: #b92b27;
+      color: #ff6600;
 
       &:hover {
-        text-decoration: underline;
+        text-decoration: none;
       };
     }
 
@@ -83,4 +83,8 @@ p {
 
   .legend {
       margin-left: 5px;
+  }
+
+  .divider{
+    margin: 0px 5px;
   }

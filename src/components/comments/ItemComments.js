@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import hnAPI from "../../services/hnAPI";
 import CommentTree from "./CommentTree";
@@ -35,10 +35,14 @@ function ItemComments(){
                                     <a className="title" href={item.url}>
                                         {item.title}
                                     </a>
-                                    <span className="domain">({item.domain})</span>
+                                    <span className="domain">
+                                        {
+                                            item.domain && (item.domain)
+                                        }
+                                    </span>
                                 </p>
                                 <div className="subtext">
-                                    <span>{item.points} points by <a href="">{item.user}</a></span>
+                                    <span>{item.points} points by <Link to={`/user/${item.user}`}>{item.user}</Link></span>
                                     <span className="legend">{item.time_ago}
                                         <span> | <a>
                                                 <span>
@@ -53,7 +57,7 @@ function ItemComments(){
                                     </span>
                                 </div>
                             </div>
-                            <p className="subject">{item.content}</p>
+                            <p className="subject" dangerouslySetInnerHTML={{__html: item.content}}></p>
                             <CommentTree commentTree={comments}></CommentTree>
                         </div>
                     }

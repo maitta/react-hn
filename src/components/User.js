@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import moment from 'moment';
 
 import hnAPI from "../services/hnAPI";
+import "../styles/User.scss";
 
 function User(){
     const userId = useParams().userId;
@@ -20,27 +21,34 @@ function User(){
 
     return(
         <>
-            <div>
-                <span>user:</span>
-                <span>{user.id}</span>
-            </div>
-            <div>
-                <span>created:</span>
-                <span>{userCreated}</span>
-            </div>
-            <div>
-                <span>karma:</span>
-                <span>{user.karma}</span>
-            </div>
-            <div>
-                <span>about:</span>
-                <span dangerouslySetInnerHTML={{__html: user.about}} />
-                <div>
-                    <p onClick={() => setShowSubmissions(!showSubmissions)}>submissions & comments</p>
+            <div class="profile">                
+                <h1>user</h1>
+                <p className="detail">{user.id}</p>
+
+                <h1>created</h1>
+                <p className="detail">{userCreated}</p>
+
+                <h1>karma</h1>
+                <p className="detail">{user.karma}</p>
+
+                <h1>about</h1>
+                <p className="detail" dangerouslySetInnerHTML={{__html: user.about}} />
+                <div>                                       
+                    <div className="detail submissions" onClick={() => setShowSubmissions(!showSubmissions)}>
+                        <span>
+                            {
+                                showSubmissions && '▼ ' ||
+                                !showSubmissions && '▶ '
+                            }
+                        </span>
+                        comments & submissions
+                    </div>
                     {
                         showSubmissions && 
-                        <p>TBD please feel free to contribute in this project's github page.</p>
-                    }
+                        <div className="detail">
+                            <p>TBD please feel free to contribute to this project.</p>
+                        </div>
+                    }                    
                 </div>
             </div>
         </>

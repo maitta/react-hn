@@ -16,7 +16,8 @@ function Item(props) {
     useEffect(() => {
         hnAPI.fetchItem(itemID).then((res) => {
             setItem(res);
-            setItemDomain(new URL(res.url).host);
+            const siteName = res.url ? `(${new URL(res.url).host})` : '';
+            setItemDomain(siteName);
             setTimeAgo(moment.unix(res.time).fromNow());
         })
     }, [setItem, setItemDomain, setTimeAgo]);
@@ -28,24 +29,25 @@ function Item(props) {
                     <a className="title" href={item.url}>
                         { item.title }
                     </a>
-                    <span className="domain">({itemDomain})</span>
+                    <span className="domain">{itemDomain}</span>
                 </p>
                 <div className="subtext-laptop">
                     {
                         item.type === 'story' && 
                             <span>
                                 {item.score} points by 
-                                <Link to={`/user/${item.by}`}>{item.by}</Link>
+                                <Link className="legend" to={`/user/${item.by}`}>{item.by}</Link>
                             </span>
                     }
                     <span className="legend">{timeAgo}</span>
-                    <Link className="legend" to={`/item/${itemID}`}>
+                    <span className="divider">|</span>
+                    <Link to={`/item/${itemID}`}>
                         <span >
-                            {item.descendants}
+                            {item.descendants > 0 && item.descendants}
                             {
-                                (item.descendants === 0 && <span className="legend">discuss</span>) ||
-                                (item.descendants === 1 && <span className="legend">comment</span>) ||
-                                (item.descendants > 1 && <span className="legend">comments</span>)
+                                (item.descendants === 0 && <span>discuss</span>) ||
+                                (item.descendants === 1 && <span> comment</span>) ||
+                                (item.descendants > 1 && <span> comments</span>)
                             }
                         </span>                        
                     </Link>

@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 
+import { Link } from "react-router-dom";
+
 import "../../styles/Comment.scss";
 
 function Comment(props) {
@@ -15,7 +17,7 @@ function Comment(props) {
                         <span className="collapse" onClick={() => {setCollapsed(!collapsed)}}>
                             [{collapsed ? '+' : '-'}]
                         </span>
-                        <a className="legend">{comment.user}</a>
+                        <Link to={`/user/${comment.user}`} className="legend">{comment.user}</Link>
                         <span className="time legend">{comment.time_ago}</span>
                     </div>
                     <div className="comment-tree">
