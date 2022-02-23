@@ -7,6 +7,7 @@ import '../styles/App.scss';
 import Header from './Header';
 import Stories from './Stories';
 import Footer from './Footer';
+import User from './User';
 
 import ItemComments from './comments/ItemComments';
 import { StoryType } from '../services/hnAPI';
@@ -55,9 +56,8 @@ function App() {
             <Route path=":pageId" element={<Stories type={StoryType.job} />} />
           </Route>
 
-          <Route path="/item" element={<ItemComments />}>
-            <Route path=":itemId" element={<ItemComments />} />
-          </Route>
+          <Route path="/item/:itemId" element={<ItemComments />} />
+          <Route path="/user/:userId" element={<User />} />
           <Route path="*" element={<Link to="/">No route available</Link>} />
         </Route>
       </Routes>

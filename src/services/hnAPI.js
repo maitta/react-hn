@@ -30,11 +30,22 @@ const hnAPI = {
     fetchItem: function(id) {
         return new Promise((resolve) => {
             axios.get(`${this.baseUrl}/item/${id}.json`).then((response) => {
-                console.debug(`Fetching single story #${id}: ${JSON.stringify(response, null, 4)}`)
+                console.debug(`Fetching single story #${id}: ${JSON.stringify(response, null, 4)}`);
                 resolve(response.data);
             }).catch((error) => {
                 console.log(error);
                 throw `Could not fetch Hacker News\' single story id #${id}`;
+            })
+        })
+    },
+    fetchUser: function(id) {
+        return new Promise((resolve) => {
+            axios.get(`${this.baseUrl}/user/${id}.json`).then((response) => {
+                console.debug(`Fetching user #${id}: ${JSON.stringify(response, null, 4)}`);
+                resolve(response.data);
+            }).catch((error) => {
+                console.log(error);
+                throw `Could not fetch Hacker News\' user id: ${id}`;
             })
         })
     },

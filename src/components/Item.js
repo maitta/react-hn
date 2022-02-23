@@ -33,7 +33,10 @@ function Item(props) {
                 <div className="subtext-laptop">
                     {
                         item.type === 'story' && 
-                            <span>{item.score} points by <a href="">{item.by}</a></span>
+                            <span>
+                                {item.score} points by 
+                                <Link to={`/user/${item.by}`}>{item.by}</Link>
+                            </span>
                     }
                     <span className="legend">{timeAgo}</span>
                     <Link className="legend" to={`/item/${itemID}`}>

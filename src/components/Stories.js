@@ -18,7 +18,7 @@ function Stories(props) {
         hnAPI.fetchStories(type).then((res) => {
             setStories(res.slice((pageId -1)*pagination.maxStories, pagination.maxStories*pageId))
         });
-    }, [pageId, type])
+    }, [pageId, type]);
 
     const getMaxPages = () => {
         switch(type){
