@@ -12,7 +12,7 @@ function Header(){
     return(      
         <>  
             <header id="header">
-                <img alt={logo} className="logo" src={logo}></img>
+                <img alt="reacthn-logo" className="logo"src={logo}></img>
                 <div className="header-text">
                     <div className="left">
                         <h1 className="name">

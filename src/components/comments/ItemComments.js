@@ -30,12 +30,6 @@ function ItemComments(){
                 <div className="main-content">            
                     { item && 
                         <div className="item">
-                            <div className="mobile item-header">
-                                {/** Markup that shows only on mobile (to give the app a
-                                responsive mobile feel). Same attributes as below,
-                                nothing really new here (but refer to the source
-                                file if you're interested) */}
-                            </div>
                             <div className="laptop item-header " >
                                 <p>
                                     <a className="title" href={item.url}>

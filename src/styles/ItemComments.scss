@@ -46,6 +46,10 @@ p {
   font-size: 17px;
   line-height: 1.75em;
   color: #696969;
+
+  @media #{$mobile-only}{
+    font-size: 15px;
+  }
 }
 
 a {
@@ -55,18 +59,6 @@ a {
 
   &:hover{
     text-decoration: none;
-  }
-}
-
-@media #{$mobile-only} {
-  .laptop {
-    display: none;
-  }
-}
-
-@media #{$laptop-only} {
-  .mobile {
-    display: none;
   }
 }
 
@@ -88,7 +80,7 @@ pre {
 
 @media #{$mobile-only} {
   .title {
-    font-size: 15px;
+    font-size: 14px;
   }
   .back-button {
     position: absolute;
@@ -113,6 +105,10 @@ pre {
   color: #696969;
   font-weight: bold;
   letter-spacing: 0.5px;
+
+  @media #{$mobile-only} {
+    font-size: 10px;
+  }
 }
 
 .domain a {
@@ -138,10 +134,10 @@ pre {
 @media #{$mobile-only} {
   .item-header {
     background-color: #fff;
-    padding: 10px 0 10px 0;
+    padding: 10px;
     position: fixed;
-    width: 100%;
+    width: 95%;
     left: 0;
-    top: 62px;
+    top: 45px;
   }
 }

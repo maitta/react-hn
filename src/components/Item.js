@@ -65,12 +65,6 @@ function Item(props) {
                         </Link>
                     </div>
                 </div>
-                <div className="item-mobile">
-                    {/* TODO Markup that shows only on mobile (to give the app a
-                    responsive mobile feel). Same attributes as above
-                    nothing really new here (but refer to the source
-                    file if you're interested) */}
-                </div>
             </div>
         }   
         </>    

@@ -9,9 +9,32 @@ $laptop-only: "only screen and (min-width : 769px)";
   padding: 30px;
 }
 
+h1 {
+  font-weight: bold;
+  font-size: 19px;  
+  padding-bottom:3px;
+}
+
+.detail {
+  font-weight: bold;
+  color: #696969;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+}
+
+.submissions{  
+  cursor: pointer;
+  color: #ff6600;
+  padding-top: 15px;
+}
+
 @media #{$mobile-only} {
   .profile {
-    padding: 110px 15px 0 15px;
+    padding: 80px 15px 0 15px;    
+  }
+  h1, .detail{
+    font-size: 14px;
   }
   .title-block {
     font-size: 15px;
@@ -40,35 +63,10 @@ $laptop-only: "only screen and (min-width : 769px)";
     width: 100%;
     left: 0;
     top: 62px;
-    height: 20px;
   }
 }
 
-@media #{$laptop-only} {
-  .mobile {
-    display: none;
-  }
-}
 
-h1 {
-  font-weight: bold;
-  font-size: 19px;  
-  padding-bottom:3px;
-}
-
-.detail {
-  font-weight: bold;
-  color: #696969;
-  font-size: 16px;
-  letter-spacing: 1px;
-  padding-bottom: 10px;
-}
-
-.submissions{  
-  cursor: pointer;
-  color: #ff6600;
-  padding-top: 15px;
-}
 
 .right {
   float: right;
