@@ -1,8 +1,10 @@
-. npm audit ==> Some vulnerabilities require your attention to resolve   
+# react-hn
+This is a react port [Angular 2 HN](https://angular2-hn.firebaseapp.com/news/1) that uses both the official HN API as well as the unnofficial, which is much faster for fetching all comments to a submitted story.
+
+Some of the markup and styles have been reused but for the largest part, this is a complete rewrite of an angular app in react.
 
 
-
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
