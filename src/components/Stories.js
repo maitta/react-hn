@@ -14,10 +14,13 @@ function Stories(props) {
 
     const [stories, setStories] = useState([]);
 
-    useEffect(() => {
+    useEffect(() => {    
         hnAPI.fetchStories(type).then((res) => {
-            setStories(res.slice((pageId -1)*pagination.maxStories, pagination.maxStories*pageId))
-        });
+            setStories(res.slice((pageId -1)*pagination.maxStories, pagination.maxStories*pageId));                            
+        });        
+        return () => {
+            console.debug('stories did unmount')
+        }       
     }, [pageId, type]);
 
     const getMaxPages = () => {
@@ -31,16 +34,17 @@ function Stories(props) {
             case StoryType.job:
             case StoryType.show:
                 return pagination.getMaxPagesShort();
+            default: throw(new Error('Unknwon item type.'));
         }
     }
 
 
     return(
-        <div className="main-content">            
+        <div className="main-content"> 
             <ol start={pagination.getDisplayIndex(pageId)}>                
                 {
                     stories.map((i) => 
-                        <li className="post" key={i*3}>
+                        <li className="post" key={i}>
                             <Item className="item-block" itemID={i}></Item>
                         </li>)
                 }                

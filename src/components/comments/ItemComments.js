@@ -4,23 +4,29 @@ import { Link, useParams } from "react-router-dom";
 import hnAPI from "../../services/hnAPI";
 import CommentTree from "./CommentTree";
 import "../../styles/ItemComments.scss";
+import Loader from "../Loader";
 
 function ItemComments(){
     const itemId = useParams().itemId;
     const [item, setItem] = useState({});
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         hnAPI.fetchItemAlt(itemId).then((res) => {
             console.log('alt api returned : ' + JSON.stringify(res))
-            setItem(res);
+            setItem(res, setIsLoading(false));
             setComments(res.comments);      
-        })
-    }, [setItem, setComments]);
+        });
+        return () => {
+            console.debug('item comments did unmount');
+        };
+    }, [itemId]);
 
     return(
         <>
-            { (isNaN(itemId) && 'Invalid item') ||
+            { (isLoading && <Loader />) ||
+              (isNaN(itemId) && 'Invalid item') ||
                 <div className="main-content">            
                     { item && 
                         <div className="item">
@@ -44,7 +50,7 @@ function ItemComments(){
                                 <div className="subtext">
                                     <span>{item.points} points by <Link to={`/user/${item.user}`}>{item.user}</Link></span>
                                     <span className="legend">{item.time_ago}
-                                        <span> | <a>
+                                        <span> | 
                                                 <span>
                                                     {item.comments_count}   
                                                     {
@@ -52,7 +58,6 @@ function ItemComments(){
                                                         (item.comments_count !== 1 && <span className="legend">comments</span>)
                                                     }
                                                 </span>
-                                            </a>
                                         </span>
                                     </span>
                                 </div>

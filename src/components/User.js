@@ -5,23 +5,30 @@ import moment from 'moment';
 
 import hnAPI from "../services/hnAPI";
 import "../styles/User.scss";
+import Loader from "./Loader";
 
 function User(){
     const userId = useParams().userId;
     const [user, setUser] = useState({});
     const [userCreated, setUserCreated] = useState('');
     const [showSubmissions, setShowSubmissions] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         hnAPI.fetchUser(userId).then((res) => {
-            setUser(res);
+            setUser(res, setIsLoading(false));
             setUserCreated(moment.unix(res.created).format('MMMM DD, YYYY'));
-        })
-    });
+        });
+        return () => {
+            console.debug('user did unmount')
+        }  
+    }, [userId]);
 
     return(
         <>
-            <div class="profile">                
+        {
+            (isLoading && <Loader />) ||
+            <div className="profile">                
                 <h1>user</h1>
                 <p className="detail">{user.id}</p>
 
@@ -37,8 +44,8 @@ function User(){
                     <div className="detail submissions" onClick={() => setShowSubmissions(!showSubmissions)}>
                         <span>
                             {
-                                showSubmissions && '▼ ' ||
-                                !showSubmissions && '▶ '
+                                (showSubmissions && '▼ ') ||
+                                (!showSubmissions && '▶ ')
                             }
                         </span>
                         comments & submissions
@@ -46,11 +53,12 @@ function User(){
                     {
                         showSubmissions && 
                         <div className="detail">
-                            <p>TBD please feel free to contribute to this project.</p>
+                            <p>TBD please feel free to contribute to this project, thanks.</p>
                         </div>
                     }                    
                 </div>
             </div>
+        }
         </>
     )
 }

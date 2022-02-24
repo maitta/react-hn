@@ -17,13 +17,12 @@ const hnAPI = {
     fetchStories: function(storyType) {
         return new Promise((resolve) => {
             axios.get(`${this.baseUrl}/${storyType}stories.json`).then((response) => {
-                // TODO debug flag
-                //console.debug(`Fetching topstories: ${JSON.stringify(response, null, 4)}`)
+                console.debug(`Fetching topstories: ${JSON.stringify(response, null, 4)}`)
                 resolve(response.data);
             })
             .catch((error) => {
                 console.log(error);
-                throw `Could not fetch Hacker News\' ${storyType} stories`;
+                throw new Error(`Could not fetch Hacker News' ${storyType} stories`);
             })
         })        
     },
@@ -34,7 +33,7 @@ const hnAPI = {
                 resolve(response.data);
             }).catch((error) => {
                 console.log(error);
-                throw `Could not fetch Hacker News\' single story id #${id}`;
+                throw new Error(`Could not fetch Hacker News' single story id #${id}`);
             })
         })
     },
@@ -45,7 +44,7 @@ const hnAPI = {
                 resolve(response.data);
             }).catch((error) => {
                 console.log(error);
-                throw `Could not fetch Hacker News\' user id: ${id}`;
+                throw new Error(`Could not fetch Hacker News' user id: ${id}`);
             })
         })
     },
@@ -56,7 +55,7 @@ const hnAPI = {
                 resolve(response.data);
             }).catch((error) => {
                 console.log(error);
-                throw `Alternative HN API could not fetch item id #${id}`;
+                throw new Error(`Alternative HN API could not fetch item id #${id}`);
             })
         })
     }
